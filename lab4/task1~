@@ -1,0 +1,35 @@
+#include<string>
+#include<iostream>
+#include<pthread.h>  /*POSIX  trheads */
+#include<unistd.h>
+using namespace std;
+
+	
+	int x = 0;
+
+void *thread_routine1(void *arg1)
+{	
+	for(int x = 0; x<100000; x++)
+	x += 1;
+}
+void *thread_routine2(void *arg1)
+{	for(int x = 0; x<100000; x++)
+	x += 3;
+}
+
+
+int main()
+{
+	pthreadt thread1, thread2;
+
+	pthread_create(&thread1, NULL,thread_routine1,NULL);
+	pthread_create(&thread2, NULL,thread_routine2,NULL);
+	
+	cout << "Number: "<<x;
+
+	cout <<endl;
+	cout <<endl;
+	pthread_exit(NULL);
+
+
+}
